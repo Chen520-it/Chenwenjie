@@ -1,0 +1,36 @@
+body{
+    background-image: url("https://image-api.hazipatika.com/hazipatika/images/articles/GR/OM/isYj5pbibKbJcrVPadhDBpqj2mT8mZmQu4x47rNp.jpg?w=1200&h=630&s=3d039f7d3b8abd61d3031c22870974a0");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.box{
+    width: 150px; 
+      height: 100px; 
+      background-color: red; 
+      border: 2px solid; 
+      display: flex; 
+      justify-content: center;
+      align-items: center;
+      margin: 10px;
+      text-align: center;
+}
+
+.container{
+    display: grid;
+    gap: 100px;
+    grid-template-columns: repeat(6,100px);
+    
+}
+
+
+h1{  
+    text-align: center;
+    color: white;
+}
+p{
+    text-align: center;
+    color: white;
+}

@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
-import Proba form './propa.jsx'
+import Proba from './Proba.jsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
