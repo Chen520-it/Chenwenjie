@@ -1,13 +1,14 @@
-const boxes = document.querySelectorAll('.box');  
-    boxes.forEach(box => {
-        
-        let szavazas = parseInt(box.getAttribute('data-value'), 10);   
+document.querySelectorAll('.box').forEach(box => {
+  box.addEventListener('click', () => {
+    
+    let szavazas = parseInt(box.getAttribute('data-value'));
+    szavazas += 1;
+    box.setAttribute('data-value', szavazas);
 
-        box.addEventListener('click', () => {      
-           
-        szavazas += 1;      
-        box.setAttribute('data-value', szavazas);      
-        box.textContent = `${szavazas} szavazás `;
+    
+    const span = box.querySelector('span');
+    span.textContent = szavazas + ' szavazás';
+  });
+});
 
-      });
-    });
+
