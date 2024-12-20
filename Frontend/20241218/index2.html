@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <title>Karácsony</title>
+    <style>
+        body {
+            background-image: url("https://image-api.hazipatika.com/hazipatika/images/articles/GR/OM/isYj5pbibKbJcrVPadhDBpqj2mT8mZmQu4x47rNp.jpg?w=1200&h=630&s=3d039f7d3b8abd61d3031c22870974a0");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        h1, p {
+            text-align: center;
+            color: white;
+        }
+
+        .container {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 响应式网格布局 */
+            padding: 20px;
+        }
+
+        .box {
+            width: 100%;
+            aspect-ratio: 1; /* 保持方块正方形 */
+            background-color: rgba(255, 0, 0, 0.8); /* 半透明红色背景 */
+            border: 2px solid white;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .box:hover {
+            transform: scale(1.05); /* 鼠标悬停效果 */
+        }
+
+        .box img {
+            width: 80%;
+            height: 70%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .box span {
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            .container {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Karácsony</h1>
+    <p>A karácsonyi ajándék karácsony ünnepekor átadott ajándék...</p>
+    <div class="container" id="box-container"></div> <!-- 动态内容容器 -->
+    <div class="result" id="result">Jelenleg nincs szavazat.</div> <!-- 显示最高投票结果 -->
+
+    <script>
+        // 示例数据：图片和默认票数
+        const data = [
+            { img: "https://kep.index.hu/1/0/3052/30529/305297/30529723_2343937_e260a1d167f4cd9605728e3855231af2_wm.jpg", votes: 0 },
+            { img: "https://via.placeholder.com/150", votes: 0 },
+            { img: "https://via.placeholder.com/150", votes: 0 },
+            { img: "https://via.placeholder.com/150", votes: 0 },
+            { img: "https://via.placeholder.com/150", votes: 0 },
+            { img: "https://via.placeholder.com/150", votes: 0 }
+        ];
+
+        const container = document.getElementById("box-container");
+        const result = document.getElementById("result");
+
+        // 动态生成方块
+        data.forEach((item, index) => {
+            const box = document.createElement("div");
+            box.className = "box";
+            box.setAttribute("data-index", index); // 标记方块的索引
+            box.setAttribute("data-value", item.votes);
+
+            const img = document.createElement("img");
+            img.src = item.img;
+            img.alt = `Ajándék ${index + 1}`;
+
+            const span = document.createElement("span");
+            span.textContent = `${item.votes} szavazás`;
+
+            box.appendChild(img);
+            box.appendChild(span);
+
+            // 点击事件绑定
+            box.addEventListener("click", () => {
+                let szavazas = parseInt(box.getAttribute("data-value"), 10);
+                szavazas += 1;
+                box.setAttribute("data-value", szavazas);
+                span.textContent = `${szavazas} szavazás`;
+
+                // 更新最高票数
+                updateResult();
+            });
+
+            container.appendChild(box);
+        });
+
+        // 更新最高票数
+        function updateResult() {
+            let maxVotes = 0;
+            let maxIndex = -1;
+
+            // 遍历找到票数最多的方块
+            data.forEach((item, index) => {
+                const box = document.querySelector(`.box[data-index="${index}"]`);
+                const votes = parseInt(box.getAttribute("data-value"), 10);
+
+                if (votes > maxVotes) {
+                    maxVotes = votes;
+                    maxIndex = index;
+                }
+            });
+
+            // 更新结果显示
+            if (maxVotes > 0) {
+                result.textContent = `A legtöbb szavazatot kapott: Ajándék ${maxIndex + 1} (${maxVotes} szavazás).`;
+            } else {
+                result.textContent = "Jelenleg nincs szavazat.";
+            }
+        }
+    </script>
+</body>
+</html>
