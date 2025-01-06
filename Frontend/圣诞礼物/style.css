@@ -75,23 +75,26 @@ h1, p {
     }
 
     p {
-        font-size: 10px;
+        font-size: 18px;
+        padding-right: 100px;
     }
 
     .container {
-        gap: 10px;
+        gap: 20px;
         grid-template-columns: repeat(3, 100px);
     }
 
     .box {
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
     }
 
     .box span {
         font-size: 12px;
+        
     }
 }
 
-
-  
+  @media (min-width:800px){
+    
+  }

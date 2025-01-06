@@ -35,6 +35,10 @@ ajandekok.forEach((item, index) => {
   box.appendChild(img);
   box.appendChild(span);
 
+  const buttonContainer =
+
+
+
       box.addEventListener("click", () => {
       let szavazas = parseInt(box.getAttribute("data-value"), 10);
       szavazas += 1;
