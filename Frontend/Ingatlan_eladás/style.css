@@ -1,0 +1,92 @@
+body{
+    background-image: url("https://konyvelescentrum.hu/wp-content/uploads/2019/06/lak%C3%A1s-ad%C3%A1sv%C3%A9tel.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+.box {
+    width: 150px;
+    height: 150px;
+    background-color:lightblue;
+    border: 2px solid;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative; 
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+.container{
+    display: grid;
+    gap: 100px;
+    grid-template-columns: repeat(6,125px);
+    top: 10px;
+    
+}
+
+
+h1, p {
+    text-align: center;
+    color: black;
+}
+
+.box img {
+    width: 80%;
+    height: 70%;
+    object-fit: cover; 
+    position: absolute;
+    top: 5px; 
+  }
+.box span {
+    margin-top: 100px; 
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(81, 76, 76);
+  }
+
+  .box:hover{
+    transform: scale(1.05s);
+  }
+
+
+  .legtobb{
+    color: black;
+    text-align: center;
+    font-size: 24px;
+    margin-top: 100px;
+  }
+
+  @media (max-width: 500px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 18px;
+        padding-right: 100px;
+    }
+
+    .container {
+        gap: 20px;
+        grid-template-columns: repeat(3, 100px);
+    }
+
+    .box {
+        width: 120px;
+        height: 120px;
+    }
+
+    .box span {
+        font-size: 12px;
+        
+    }
+}
+
+
+  
