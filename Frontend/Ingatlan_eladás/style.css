@@ -4,10 +4,9 @@ body{
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    color: white;
+    color: black;
     font-family: Arial, sans-serif;
 }
-
 
 .box {
     width: 150px;
@@ -16,7 +15,7 @@ body{
     border: 2px solid;
     border-radius: 10px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /*的意思是将子元素之间的间距均匀分配，并且第一个子元素对齐容器的左边缘，最后一个子元素对齐容器的右边缘。*/
     align-items: center;
     flex-direction: column;
     position: relative; 
@@ -31,7 +30,6 @@ body{
     
 }
 
-
 h1, p {
     text-align: center;
     color: black;
@@ -43,16 +41,37 @@ h1, p {
     object-fit: cover; 
     position: absolute;
     top: 5px; 
+    margin-top: 5px;
   }
 .box span {
-    margin-top: 100px; 
+    margin-top: 110px; 
     font-size: 16px;
     font-weight: bold;
     color: rgb(81, 76, 76);
+    
   }
+
+  .erdeklodes{
+    background-color: lightskyblue;
+    color: white;
+    border: none; /*没有边框*/
+    border-radius: 5px; /*边角圆滑*/
+    padding: 8px 16px;
+    cursor: pointer; /*当鼠标对准按钮 鼠标会变成一个手掌*/
+    font-size: 14px;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s; /*设置过度效果 颜色在零点三秒完成变化 变大也在零点二秒完成 ease是让按钮逐渐变化*/
+    margin-top: 10px; /* 按钮与方块内容之间的间距 */
+}
+
+.erdeklodes:hover {
+    background-color: deepskyblue; /* 悬停时变深的颜色 */
+    transform: scale(1.1); /* 悬停时按钮轻微放大 */
+}
 
   .box:hover{
     transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   }
 
 
@@ -83,6 +102,11 @@ h1, p {
       font-size: 14px;
       padding: 0 5px;
   }
+
+  .erdeklodes {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
 }
 
 /* 平板 */
@@ -104,6 +128,11 @@ h1, p {
       font-size: 16px;
       padding: 0 10px;
   }
+
+  .erdeklodes {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
 }
 
 /* 笔记本电脑（ */
@@ -124,6 +153,11 @@ h1, p {
   p {
       font-size: 18px;
   }
+
+  .erdeklodes {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
 }
 
 /* 桌面电脑 */
@@ -143,5 +177,10 @@ h1, p {
 
   p {
       font-size: 20px;
+  }
+
+  .erdeklodes {
+    font-size: 16px;
+    padding: 10px 20px;
   }
 }
