@@ -4,6 +4,8 @@ body{
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    color: white;
+    font-family: Arial, sans-serif;
 }
 
 
@@ -26,7 +28,6 @@ body{
     display: grid;
     gap: 100px;
     grid-template-columns: repeat(6,125px);
-    top: 10px;
     
 }
 
@@ -51,7 +52,7 @@ h1, p {
   }
 
   .box:hover{
-    transform: scale(1.05s);
+    transform: scale(1.05);
   }
 
 
@@ -60,33 +61,87 @@ h1, p {
     text-align: center;
     font-size: 24px;
     margin-top: 100px;
+  } 
+
+/* 手机 */
+@media (max-width: 425px) {
+  .container {
+      grid-template-columns: repeat(2, 1fr); /* 改为2列布局 */
+      gap: 10px; 
+      padding: 10px; 
   }
 
-  @media (max-width: 500px) {
-    h1 {
-        font-size: 24px;
-    }
+  .box {
+      height: 120px; 
+  }
 
-    p {
-        font-size: 18px;
-        padding-right: 100px;
-    }
+  h1 {
+      font-size: 20px;
+  }
 
-    .container {
-        gap: 20px;
-        grid-template-columns: repeat(3, 100px);
-    }
-
-    .box {
-        width: 120px;
-        height: 120px;
-    }
-
-    .box span {
-        font-size: 12px;
-        
-    }
+  p {
+      font-size: 14px;
+      padding: 0 5px;
+  }
 }
 
+/* 平板 */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+      grid-template-columns: repeat(3, 1fr); /* 改为3列布局 */
+      gap: 15px;
+  }
 
-  
+  .box {
+      height: 140px; 
+  }
+
+  h1 {
+      font-size: 24px;
+  }
+
+  p {
+      font-size: 16px;
+      padding: 0 10px;
+  }
+}
+
+/* 笔记本电脑（ */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .container {
+      grid-template-columns: repeat(4, 1fr); /* 默认4列 */
+      gap: 20px;
+  }
+
+  .box {
+      height: 150px;
+  }
+
+  h1 {
+      font-size: 28px;
+  }
+
+  p {
+      font-size: 18px;
+  }
+}
+
+/* 桌面电脑 */
+@media (min-width: 1441px) {
+  .container {
+      grid-template-columns: repeat(5, 1fr); /* 超大屏显示5列 */
+      gap: 25px;
+  }
+
+  .box {
+      height: 200px; 
+  }
+
+  h1 {
+      font-size: 32px;
+  }
+
+  p {
+      font-size: 20px;
+  }
+}

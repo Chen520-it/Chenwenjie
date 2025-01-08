@@ -1,100 +1,144 @@
-body{
-    background-image: url("https://image-api.hazipatika.com/hazipatika/images/articles/GR/OM/isYj5pbibKbJcrVPadhDBpqj2mT8mZmQu4x47rNp.jpg?w=1200&h=630&s=3d039f7d3b8abd61d3031c22870974a0");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+body {
+  background-image: url("https://image-api.hazipatika.com/hazipatika/images/articles/GR/OM/isYj5pbibKbJcrVPadhDBpqj2mT8mZmQu4x47rNp.jpg?w=1200&h=630&s=3d039f7d3b8abd61d3031c22870974a0");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+  font-family: Arial, sans-serif;
 }
-
 
 .box {
-    width: 150px;
-    height: 150px;
-    background-color: red;
-    border: 2px solid;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative; 
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-
-.container{
-    display: grid;
-    gap: 100px;
-    grid-template-columns: repeat(6,125px);
-    top: 10px;
-    
+  width: 150px;
+  height: 150px;
+  background-color: red;
+  border: 2px solid;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
 
+.container {
+  display: grid;
+  gap: 100px;
+  grid-template-columns: repeat(6, 125px);
+}
 
 h1, p {
-    text-align: center;
-    color: white;
+  text-align: center;
+  color: white;
 }
 
 .box img {
-    width: 80%;
-    height: 70%;
-    object-fit: cover; 
-    position: absolute;
-    top: 5px; 
-  }
-.box span {
-    margin-top: 100px; 
-    font-size: 16px;
-    font-weight: bold;
-    color: rgb(81, 76, 76);
-  }
-
-  .box:hover{
-    transform: scale(1.05s);
-  }
-
-  .eredmeny{
-    text-align: center;
-    margin-top: 20px;
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-  }
-
-  .legtobb{
-    color: white;
-    text-align: center;
-    font-size: 24px;
-    margin-top: 100px;
-  }
-
-  @media (max-width: 500px) {
-    h1 {
-        font-size: 24px;
-    }
-
-    p {
-        font-size: 18px;
-        padding-right: 100px;
-    }
-
-    .container {
-        gap: 20px;
-        grid-template-columns: repeat(3, 100px);
-    }
-
-    .box {
-        width: 120px;
-        height: 120px;
-    }
-
-    .box span {
-        font-size: 12px;
-        
-    }
+  width: 80%;
+  height: 70%;
+  object-fit: cover;
+  position: absolute;
+  top: 5px;
 }
 
-  @media (min-width:800px){
-    
+.box span {
+  margin-top: 100px;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(81, 76, 76);
+}
+
+.box:hover {
+  transform: scale(1.05);
+}
+
+.legtobb {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 100px;
+  color: white;
+}
+
+/* 手机 */
+@media (max-width: 425px) {
+  .container {
+      grid-template-columns: repeat(2, 1fr); /* 改为2列布局 */
+      gap: 10px; 
+      padding: 10px; 
   }
+
+  .box {
+      height: 120px; 
+  }
+
+  h1 {
+      font-size: 20px;
+  }
+
+  p {
+      font-size: 14px;
+      padding: 0 5px;
+  }
+}
+
+/* 平板 */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+      grid-template-columns: repeat(3, 1fr); /* 改为3列布局 */
+      gap: 15px;
+  }
+
+  .box {
+      height: 140px; 
+  }
+
+  h1 {
+      font-size: 24px;
+  }
+
+  p {
+      font-size: 16px;
+      padding: 0 10px;
+  }
+}
+
+/* 笔记本电脑（ */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .container {
+      grid-template-columns: repeat(4, 1fr); /* 默认4列 */
+      gap: 20px;
+  }
+
+  .box {
+      height: 150px;
+  }
+
+  h1 {
+      font-size: 28px;
+  }
+
+  p {
+      font-size: 18px;
+  }
+}
+
+/* 桌面电脑 */
+@media (min-width: 1441px) {
+  .container {
+      grid-template-columns: repeat(5, 1fr); /* 超大屏显示5列 */
+      gap: 25px;
+  }
+
+  .box {
+      height: 200px; 
+  }
+
+  h1 {
+      font-size: 32px;
+  }
+
+  p {
+      font-size: 20px;
+  }
+}
