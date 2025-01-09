@@ -61,7 +61,7 @@ h1, p {
 }
 
 /* 手机 */
-@media (max-width: 425px) {
+@media (min-width: 425px) and (max-width: 767px) {
   .container {
       grid-template-columns: repeat(2, 1fr); /* 改为2列布局 */
       gap: 10px; 
@@ -126,7 +126,7 @@ h1, p {
 /* 桌面电脑 */
 @media (min-width: 1441px) {
   .container {
-      grid-template-columns: repeat(5, 1fr); /* 超大屏显示5列 */
+      grid-template-columns: repeat(6, 1fr); /* 超大屏显示5列 */
       gap: 25px;
   }
 
