@@ -50,11 +50,11 @@ lakasok.forEach((item, index) => {
       }
 
       
-      emailjs.init("service_zuc6ubu"); 
+      emailjs.init("-t-ZkuuCSqXAJ55uT");
 
       // 邮件数据
       const emailAdatok = {
-          to_email: "chenwenjie0505@gmaail.com", // 替换为接收邮件的邮箱
+          to_email: "chenwenjie0505@gmail.com", // 替换为接收邮件的邮箱
           user_name: userName,
           user_phone: userPhone,
           
