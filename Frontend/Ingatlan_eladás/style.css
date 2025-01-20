@@ -1,100 +1,105 @@
-body{
-    background-image: url("https://konyvelescentrum.hu/wp-content/uploads/2019/06/lak%C3%A1s-ad%C3%A1sv%C3%A9tel.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: black;
-    font-family: Arial, sans-serif;
-}
-
-.box {
-    width: 150px;
-    height: 150px;
-    background-color:lightblue;
-    border: 2px solid;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between; /*的意思是将子元素之间的间距均匀分配，并且第一个子元素对齐容器的左边缘，最后一个子元素对齐容器的右边缘。*/
-    align-items: center;
-    flex-direction: column;
-    position: relative; 
-    cursor: pointer;
-    transition: transform 0.2s;
-    margin-bottom: 40px;
-  }
-
-.container{
-    display: grid;
-    gap: 100px;
-    grid-template-columns: repeat(6,125px);
-    
+body {
+  background-image: url("https://konyvelescentrum.hu/wp-content/uploads/2019/06/lak%C3%A1s-ad%C3%A1sv%C3%A9tel.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: black;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 h1, p {
-    text-align: center;
-    color: black;
-    font-size: 24px;
+  text-align: center;
+  color: black;
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+.container {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: repeat(6, 1fr);
+  padding: 0 20px;
+}
+
+.box {
+  width: 250px;  /* 增加宽度 */
+  height: 300px;  /* 增加高度 */
+  background-color: lightblue;
+  border: 2px solid;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  padding: 10px;
 }
 
 .box img {
-    width: 80%;
-    height: 70%;
-    object-fit: cover; 
-    position: absolute;
-    top: 5px; 
-    margin-top: 5px;
-  }
-.box span {
-    margin-top: 110px; 
-    font-size: 16px;
-    font-weight: bold;
-    color: rgb(81, 76, 76);
-    
-  }
+  width: 80%;
+  height: 60%;
+  object-fit: cover;
+  margin-top: 10px;
+}
 
-  .erdeklodes{
-    background-color: lightskyblue;
-    color: white;
-    border: none; /*没有边框*/
-    border-radius: 5px; /*边角圆滑*/
-    padding: 8px 16px;
-    cursor: pointer; /*当鼠标对准按钮 鼠标会变成一个手掌*/
-    font-size: 14px;
-    text-align: center;
-    transition: background-color 0.3s ease, transform 0.2s; /*设置过度效果 颜色在零点三秒完成变化 变大也在零点二秒完成 ease是让按钮逐渐变化*/
-    margin-top: 10px; /* 按钮与方块内容之间的间距 */
-    
+.box .info {
+  text-align: center;
+  font-size: 14px;
+  flex-grow: 1;  /* 让信息区域自适应扩展 */
+  padding: 5px;
+}
+
+.box .info span {
+  display: block;
+  margin-top: 5px;
+  font-weight: bold;
+  color: rgb(81, 76, 76);
+}
+
+.erdeklodes {
+  background-color: lightskyblue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s;
+  margin-top: 10px;
 }
 
 .erdeklodes:hover {
-    background-color: deepskyblue; /* 悬停时变深的颜色 */
-    transform: scale(1.1); /* 悬停时按钮轻微放大 */
+  background-color: deepskyblue;
+  transform: scale(1.1);
 }
 
-  .box:hover{
-    transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  }
+.box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
 
-
-  .legtobb{
-    color: black;
-    text-align: center;
-    font-size: 24px;
-    margin-top: 100px;
-  } 
+.legtobb {
+  color: black;
+  text-align: center;
+  font-size: 24px;
+  margin-top: 40px;
+}
 
 /* 手机 */
-@media (min-width: 425px) and (max-width: 767px){
+@media (min-width: 425px) and (max-width: 767px) {
   .container {
-      grid-template-columns: repeat(2, 1fr); /* 改为2列布局 */
-      gap: 10px; 
-      padding: 10px; 
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
   }
 
   .box {
-      height: 120px; 
+      height: 280px;  /* 增加高度 */
   }
 
   h1 {
@@ -103,24 +108,22 @@ h1, p {
 
   p {
       font-size: 14px;
-      padding: 0 5px;
   }
 
   .erdeklodes {
-    font-size: 12px;
-    padding: 6px 12px;
+      font-size: 12px;
   }
 }
 
 /* 平板 */
 @media (min-width: 768px) and (max-width: 1024px) {
   .container {
-      grid-template-columns: repeat(3, 1fr); /* 改为3列布局 */
-      gap: 15px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
   }
 
   .box {
-      height: 140px; 
+      height: 290px;  /* 增加高度 */
   }
 
   h1 {
@@ -129,24 +132,22 @@ h1, p {
 
   p {
       font-size: 16px;
-      padding: 0 10px;
   }
 
   .erdeklodes {
-    font-size: 14px;
-    padding: 8px 16px;
+      font-size: 14px;
   }
 }
 
-/* 笔记本电脑（ */
+/* 笔记本电脑 */
 @media (min-width: 1025px) and (max-width: 1440px) {
   .container {
-      grid-template-columns: repeat(4, 1fr); /* 默认4列 */
-      gap: 20px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
   }
 
   .box {
-      height: 150px;
+      height: 300px;  /* 增加高度 */
   }
 
   h1 {
@@ -154,24 +155,23 @@ h1, p {
   }
 
   p {
-      font-size: 24px;
+      font-size: 20px;
   }
 
   .erdeklodes {
-    font-size: 16px;
-    padding: 10px 20px;
+      font-size: 16px;
   }
 }
 
 /* 桌面电脑 */
 @media (min-width: 1441px) {
   .container {
-      grid-template-columns: repeat(6, 1fr); /* 超大屏显示6列 */
-      gap: 25px;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 30px;
   }
 
   .box {
-      height: 200px; 
+      height: 350px;  /* 增加高度 */
   }
 
   h1 {
@@ -179,11 +179,10 @@ h1, p {
   }
 
   p {
-      font-size: 36px;
+      font-size: 24px;
   }
 
   .erdeklodes {
-    font-size: 16px;
-    padding: 10px 20px;
+      font-size: 16px;
   }
 }

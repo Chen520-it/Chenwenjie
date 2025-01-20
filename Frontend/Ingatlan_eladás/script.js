@@ -1,114 +1,152 @@
-const lakasok= [
-  { img: "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg", value: 0 },
-  { img: "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg", value: 0 },
-  { img: "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg", value: 0 },
-  { img: "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg", value: 0 },
-  { img: "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg", value: 0 },
-  { img: "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg", value: 0 },
-  { img: "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg", value: 0 },
-  { img: "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg", value: 0 },
-  { img: "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg", value: 0 },
-  { img: "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg", value: 0 },
-  { img: "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg", value: 0 },
-  { img: "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg", value: 0 }
-
-];
-//获取html的元素
-const container = document.getElementById("box-container");
-const legtobb = document.getElementById("legtobb");
-
-// 动态生成方块
-lakasok.forEach((item, index) => {
-  const box = document.createElement("div");
-  box.className = "box";
-  box.setAttribute("data-index", index);
-  box.setAttribute("data-value", item.value);
-
-  const img = document.createElement("img");
-  img.src = item.img;
-  img.alt = `Lakás ${index + 1}`;
-
-  const span = document.createElement("span");
-  span.textContent = `${item.value} szavazás`;
-
-  const button = document.createElement("button");
-  button.textContent = "Érdeklődés";
-  button.className = "erdeklodes";
-
-  // 按钮点击事件 - 发送邮件
-  button.addEventListener("click", (event) => {
-      event.stopPropagation(); // 防止触发父级点击事件
-
-      // 获取用户输入的信息
-      const userName = prompt("请输入您的名字：");
-      const userPhone = prompt("请输入您的电话：");
-      
-
-      if (!userName || !userPhone) {
-          alert("所有信息不能为空！");
-          return;
-      }
-
-      
-      emailjs.init("-t-ZkuuCSqXAJ55uT");
-
-      // 邮件数据
-      const emailAdatok = {
-          to_email: "chenwenjie0505@gmail.com", // 替换为接收邮件的邮箱
-          user_name: userName,
-          user_phone: userPhone,
-          
-          subject: `Érdeklődés a(z) ${index + 1} számú lakás iránt`,
-      };
-
-      // 发送邮件
-      emailjs.send("service_zuc6ubu", "template_6lvcxha", emailAdatok)
-             .then((response) => {
-              alert("邮件已成功发送！");
-          })
-            .catch((error) => {
-              console.error("邮件发送失败:", error);
-              alert("邮件发送失败，请稍后再试！");
-          });
-  });
-
-  box.appendChild(img);
-  box.appendChild(span);
-  box.appendChild(button);
-
-  box.addEventListener("click", () => {
-      let szavazas = parseInt(box.getAttribute("data-value"), 10);
-      szavazas += 1;
-      box.setAttribute("data-value", szavazas);
-      span.textContent = `${szavazas} szavazás`;
-      lakasok[index].value = szavazas;
-      frisites();
-  });
-
-  container.appendChild(box);
-});
-
-
-// 更新最高票数
-function frisites() {
-  let maxValue = 0;
-  let maxIndex = -1;
-
-  // 票数最高的显示出来
-  lakasok.forEach((item, index) => {
-      const value=item.value;
-
-      if (value > maxValue) {
-          maxValue = value;
-          maxIndex = index;
-      }
-  });
-
-  // 更新结果
-  if (maxValue > 0) {
-      legtobb.textContent = `A legtöbb szavazatot kapott: ${maxIndex + 1},   ${maxValue}db szavazás.`;
-  } 
-  else {
-      legtobb.textContent = "Jelenleg nincs szavazat.";
+const lakasok = [
+    {
+      img: "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg",
+      telepules: "Budapest, I. kerület",
+      szobaszam: "3",
+      leiras: "Tágas nappali, jó közlekedés.",
+      alapterulet: "80㎡",
+      ar: "60 millió Ft"
+    },
+    {
+      img: "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg",
+      telepules: "Budapest, II. kerület",
+      szobaszam: "4",
+      leiras: "Családbarát környék, közel iskola és park.",
+      alapterulet: "100㎡",
+      ar: "75 millió Ft"
+    },
+    {
+      img: "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg",
+      telepules: "Budapest, III. kerület",
+      szobaszam: "2",
+      leiras: "Csendes környék, fiatal pároknak ideális.",
+      alapterulet: "70㎡",
+      ar: "50 millió Ft"
+    },
+    {
+      img: "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg",
+      telepules: "Budapest, I. kerület",
+      szobaszam: "3",
+      leiras: "Felújított lakás, közel a várhoz.",
+      alapterulet: "80㎡",
+      ar: "62 millió Ft"
+    },
+    {
+      img: "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg",
+      telepules: "Budapest, II. kerület",
+      szobaszam: "3",
+      leiras: "Tágas lakás erkéllyel és panorámával.",
+      alapterulet: "90㎡",
+      ar: "70 millió Ft"
+    },
+    {
+      img: "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg",
+      telepules: "Budapest, V. kerület",
+      szobaszam: "2",
+      leiras: "Belvárosi lakás, közel üzletekhez.",
+      alapterulet: "60㎡",
+      ar: "55 millió Ft"
+    },
+    {
+      img: "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg",
+      telepules: "Budapest, III. kerület",
+      szobaszam: "4",
+      leiras: "Kertkapcsolatos lakás, ideális családoknak.",
+      alapterulet: "100㎡",
+      ar: "78 millió Ft"
+    },
+    {
+      img: "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg",
+      telepules: "Budapest, VI. kerület",
+      szobaszam: "1",
+      leiras: "Garzonlakás fiataloknak.",
+      alapterulet: "35㎡",
+      ar: "38 millió Ft"
+    },
+    {
+      img: "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg",
+      telepules: "Budapest, VII. kerület",
+      szobaszam: "2",
+      leiras: "Jól megközelíthető, kényelmes lakás.",
+      alapterulet: "70㎡",
+      ar: "48 millió Ft"
+    },
+    {
+      img: "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg",
+      telepules: "Budapest, V. kerület",
+      szobaszam: "2",
+      leiras: "Luxuslakás a belváros szívében.",
+      alapterulet: "60㎡",
+      ar: "80 millió Ft"
+    },
+    {
+      img: "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg",
+      telepules: "Budapest, IV. kerület",
+      szobaszam: "3",
+      leiras: "Csendes környék, parkok közelében.",
+      alapterulet: "85㎡",
+      ar: "63 millió Ft"
+    },
+    {
+      img: "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg",
+      telepules: "Budapest, VIII. kerület",
+      szobaszam: "2",
+      leiras: "Panorámás lakás, kiváló közlekedéssel.",
+      alapterulet: "75㎡",
+      ar: "58 millió Ft"
+    }
+  ];
+  
+  // 获取HTML元素
+  const container = document.getElementById("box-container");
+  const addButton = document.getElementById("add-button");
+  
+  // 渲染房子信息
+  function renderLakasok() {
+    container.innerHTML = ""; // 清空容器
+    lakasok.forEach((item, index) => {
+      const box = document.createElement("div");
+      box.className = "box";
+  
+      const img = document.createElement("img");
+      img.src = item.img;
+      img.alt = `房源 ${index + 1}`;
+  
+      const info = document.createElement("div");
+      info.className = "info";
+      info.innerHTML = `
+        Település: ${item.telepules}<br>
+        Szobaszám: ${item.szobaszam}<br>
+        Alapírás: ${item.leiras}<br>
+        Alapterület: ${item.alapterulet}<br>
+        Ár: ${item.ar}
+      `;
+  
+      box.appendChild(img);
+      box.appendChild(info);
+      container.appendChild(box);
+    });
   }
-}
+  
+  // 添加新房源
+  addButton.addEventListener("click", () => {
+    const telepules = prompt("Adja meg a települést (kerület):");
+    const szobaszam = prompt("Adja meg a szobák számát:");
+    const leiras = prompt("Adja meg a lakás leírását:");
+    const alapterulet = prompt("Adja meg az alapterületet:");
+    const ar = prompt("Adja meg az árat:");
+    
+  
+    if (!telepules || !szobaszam || !leiras || !alapterulet || !ar) {
+      alert("Minden mezőt ki kell tölteni!");
+      return;
+    }
+  
+    // 添加到数组并重新渲染
+    lakasok.push({telepules, szobaszam, leiras, alapterulet, ar });
+    renderLakasok();
+  });
+  
+  // 初始化渲染
+  renderLakasok();
+  
