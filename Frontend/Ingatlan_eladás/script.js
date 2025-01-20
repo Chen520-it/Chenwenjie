@@ -110,7 +110,7 @@ const lakasok = [
   
       const img = document.createElement("img");
       img.src = item.img;
-      img.alt = `房源 ${index + 1}`;
+      img.alt = `lakás ${index + 1}`;
   
       const info = document.createElement("div");
       info.className = "info";
@@ -121,9 +121,20 @@ const lakasok = [
         Alapterület: ${item.alapterulet}<br>
         Ár: ${item.ar}
       `;
+
+      const deleteButton = document.createElement("button");
+      deleteButton.className = "delete-button";
+      deleteButton.textContent = "Törlés";
+      deleteButton.addEventListener("click", () => {
+      // 从数组中移除该房源并重新渲染
+      lakasok.splice(index, 1);
+      renderLakasok();
+    });
+    
   
       box.appendChild(img);
       box.appendChild(info);
+      box.appendChild(deleteButton);
       container.appendChild(box);
     });
   }
@@ -135,6 +146,7 @@ const lakasok = [
     const leiras = prompt("Adja meg a lakás leírását:");
     const alapterulet = prompt("Adja meg az alapterületet:");
     const ar = prompt("Adja meg az árat:");
+    const img = "https://ingatlan5.hu/public/storage/Ingatlanado2.jpg";
     
   
     if (!telepules || !szobaszam || !leiras || !alapterulet || !ar) {
@@ -143,9 +155,10 @@ const lakasok = [
     }
   
     // 添加到数组并重新渲染
-    lakasok.push({telepules, szobaszam, leiras, alapterulet, ar });
+    lakasok.push({img, telepules, szobaszam, leiras, alapterulet, ar });
     renderLakasok();
   });
+  
   
   // 初始化渲染
   renderLakasok();

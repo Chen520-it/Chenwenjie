@@ -91,6 +91,23 @@ h1, p {
   margin-top: 40px;
 }
 
+.delete-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.delete-button:hover {
+  background-color: #ff0000;
+  transform: scale(1.1);
+}
+
 /* 手机 */
 @media (min-width: 425px) and (max-width: 767px) {
   .container {
