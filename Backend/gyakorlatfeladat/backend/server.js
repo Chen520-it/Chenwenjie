@@ -20,7 +20,7 @@ const db = mysql.createConnection({
 
 
 app.get("/", (req, res) =>{
-    res.send("Express is running");
+    res.send("Fut a backend");
 });
 
 app.get("/regiok", (req, res) =>{  
@@ -34,3 +34,19 @@ app.get("/regiok", (req, res) =>{
 app.listen(3001, () =>{
     console.log("Server is running on port 3001");
 });
+
+app.post("/ujregiok", (req, res) => {
+    
+    const sql = "INSERT INTO `regiok` (`Rid`, `regionev`, `regio_tipusa`) VALUES (?, ?, ?)";
+    const VALUES = ['11', 'Győr', 'Főváros'];
+ 
+    db.query(sql, VALUES, (err, result) => {
+        if (err) {
+            console.error("Hiba történt:", err);
+            return res.status(500).json({error: "Adatbázis hiba történt"})
+        }
+        return res.status(200).json({ message: "Sikeres beszúrás", result });
+    });
+});
+ 
+ 
